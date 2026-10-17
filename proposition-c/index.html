@@ -1,0 +1,557 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tant pis pour King Kong ! — Dans la brume (proposition C)</title>
+<!-- VERSION TEST : à retirer lors de la mise en ligne sur maniaka-theatre.fr -->
+<meta name="robots" content="noindex, nofollow">
+<meta name="description" content="Tant pis pour King Kong !, théâtre d'objets documentaire d'après la vie de Dian Fossey. De et avec Audrey Boudon, Compagnie Maniaka Théâtre.">
+<link rel="icon" href="../images/favicon.png" type="image/png">
+<link rel="preload" href="../fonts/londrina-solid-black.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="../images/gorille-portrait-nb.webp" as="image">
+<style>
+@font-face{font-family:"Londrina Solid";src:url("../fonts/londrina-solid.woff2") format("woff2");font-weight:400;font-display:swap}
+@font-face{font-family:"Londrina Solid";src:url("../fonts/londrina-solid-black.woff2") format("woff2");font-weight:900;font-display:swap}
+@font-face{font-family:"Josefin Sans";src:url("../fonts/josefin-sans.woff2") format("woff2");font-weight:100 700;font-display:swap}
+@font-face{font-family:"Josefin Sans";src:url("../fonts/josefin-sans-italic.woff2") format("woff2");font-weight:100 700;font-style:italic;font-display:swap}
+@font-face{font-family:"Special Elite";src:url("../fonts/special-elite.woff2") format("woff2");font-display:swap}
+
+:root{
+  --night:#070d09; --deep:#0e1a12; --forest:#16291b; --moss:#2c4a2e; --leaf:#8cc63f; --leaf-l:#c9e59a;
+  --paper:#f2eee3; --coral:#ec5b6e; --coral-d:#c93f53;
+  --title:"Londrina Solid","Arial Black",sans-serif; --body:"Josefin Sans","Trebuchet MS",sans-serif; --type:"Special Elite","Courier New",monospace;
+  --g:clamp(16px,4vw,40px);
+}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--night);color:var(--paper);font-family:var(--body);font-size:1.1rem;line-height:1.65;overflow-x:hidden}
+img{max-width:100%;height:auto;display:block}
+figure{margin:0}
+a{color:inherit}
+h1,h2,h3{font-family:var(--title);font-weight:900;line-height:.92;margin:0 0 .4em;text-transform:uppercase}
+h2{font-size:clamp(2.6rem,7vw,5.4rem)}
+h3{font-size:clamp(1.4rem,2.6vw,1.9rem)}
+p{margin:0 0 1em}
+.wrap{max-width:1200px;margin:0 auto;padding:0 var(--g)}
+.kick{font-family:var(--type);color:var(--leaf);font-size:.95rem;letter-spacing:.06em;display:block;margin-bottom:1rem}
+.lead{font-size:clamp(1.2rem,2.3vw,1.5rem);line-height:1.5}
+:focus-visible{outline:3px solid var(--leaf);outline-offset:3px}
+.btn{display:inline-flex;align-items:center;gap:.6em;font-family:var(--body);font-weight:600;letter-spacing:.14em;text-transform:uppercase;font-size:.95rem;padding:1em 1.6em .85em;text-decoration:none;border:2px solid var(--paper);color:var(--paper);background:transparent;cursor:pointer;border-radius:99px;transition:background .25s,color .25s,transform .25s}
+.btn:hover{background:var(--paper);color:var(--night);transform:translateY(-2px)}
+.btn--coral{background:var(--coral);border-color:var(--coral);color:#fff}
+.btn--coral:hover{background:var(--coral-d);border-color:var(--coral-d);color:#fff}
+
+/* ===== brume animée réutilisable ===== */
+.fog{position:absolute;inset:-10% -30%;pointer-events:none;z-index:1;
+  background:radial-gradient(ellipse 40% 25% at 20% 70%,rgba(220,235,220,.16),transparent 70%),radial-gradient(ellipse 35% 20% at 70% 80%,rgba(220,235,220,.13),transparent 70%),radial-gradient(ellipse 50% 22% at 50% 95%,rgba(220,235,220,.2),transparent 70%);
+  animation:fog 28s ease-in-out infinite alternate}
+.fog--2{animation-duration:40s;animation-direction:alternate-reverse;opacity:.8;transform:scaleX(-1)}
+@keyframes fog{from{transform:translateX(-8%)}to{transform:translateX(8%)}}
+
+/* ===== en-tête ===== */
+.top{position:fixed;inset:0 0 auto;z-index:50;transition:background .3s}
+.top.solid{background:rgba(7,13,9,.85);backdrop-filter:blur(8px)}
+.top .wrap{display:flex;align-items:center;justify-content:space-between;height:68px;max-width:1400px}
+.brand{letter-spacing:.32em;text-transform:uppercase;font-size:.85rem;color:var(--coral);text-decoration:none;white-space:nowrap}
+.top nav{display:flex;gap:1.8rem}
+.top nav a{text-decoration:none;text-transform:uppercase;letter-spacing:.14em;font-size:.78rem;font-weight:600;opacity:.85}
+.top nav a:hover{opacity:1;color:var(--leaf)}
+@media(max-width:960px){.top nav{display:none}}
+
+/* ===== ouverture : la lampe torche ===== */
+.hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--night);cursor:none}
+.hero-img{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 28%/cover no-repeat;
+  -webkit-mask-image:radial-gradient(circle var(--r,190px) at var(--x,50%) var(--y,45%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
+          mask-image:radial-gradient(circle var(--r,190px) at var(--x,50%) var(--y,45%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
+  filter:contrast(1.1)}
+.hero-dim{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 28%/cover no-repeat;opacity:.05}
+.hero.lit .hero-img{-webkit-mask-image:none;mask-image:none;opacity:.55;transition:opacity 1.6s}
+.hero.lit{cursor:auto}
+.hero-text{position:absolute;inset:auto 0 0;z-index:3;padding:0 var(--g) clamp(60px,10vh,110px);pointer-events:none}
+.hero-text .wrap{max-width:1400px;padding:0}
+.whisper{font-family:var(--type);font-size:clamp(1.1rem,2.4vw,1.6rem);min-height:1.6em;margin-bottom:1rem;color:var(--paper)}
+.whisper span{opacity:0;transition:opacity 1s}
+.whisper span.on{opacity:1}
+.hero h1{font-size:clamp(3.6rem,12vw,10.5rem);line-height:.84;margin:0;opacity:0;transform:translateY(30px);transition:opacity 1.2s,transform 1.2s;text-shadow:0 6px 40px rgba(0,0,0,.6)}
+.hero h1 .bang{color:var(--coral)}
+.hero.lit h1{opacity:1;transform:none}
+.hero-meta{display:flex;flex-wrap:wrap;align-items:center;gap:1rem 2rem;margin-top:1.6rem;opacity:0;transition:opacity 1s .6s;pointer-events:auto}
+.hero.lit .hero-meta{opacity:1}
+.hero-meta p{margin:0;font-family:var(--type);font-size:1rem;line-height:1.6}
+.hint{position:absolute;top:18%;left:50%;transform:translateX(-50%);width:90%;z-index:3;font-family:var(--type);font-size:.9rem;letter-spacing:.1em;opacity:.55;transition:opacity .6s;pointer-events:none;text-align:center}
+.hero.lit .hint,.hero.moved .hint{opacity:0}
+.hint .touch{display:none}@media(hover:none){.hint .mouse{display:none}.hint .touch{display:inline}}
+.skip{position:absolute;right:var(--g);bottom:24px;z-index:4;font-family:var(--type);font-size:.85rem;background:none;border:0;color:var(--paper);opacity:.6;cursor:pointer;text-decoration:underline}
+.hero.lit .skip{display:none}
+
+/* ===== altimètre ===== */
+.alti{position:fixed;right:18px;top:50%;transform:translateY(-50%);z-index:40;height:46vh;width:54px;display:flex;flex-direction:column;align-items:center;gap:.6rem;opacity:0;transition:opacity .5s;pointer-events:none}
+.alti.show{opacity:1}
+.alti .bar{flex:1;width:3px;background:rgba(242,238,227,.18);position:relative;border-radius:3px}
+.alti .fill{position:absolute;inset:auto 0 0;height:0;background:linear-gradient(var(--leaf),var(--coral));border-radius:3px}
+.alti .val{font-family:var(--type);font-size:.78rem;text-align:center;line-height:1.2;white-space:nowrap}
+.alti .val b{display:block;font-family:var(--title);font-size:1.25rem;color:var(--leaf-l)}
+@media(max-width:760px){.alti{right:6px;width:44px;height:34vh}.alti .val{font-size:.65rem}.alti .val b{font-size:1rem}}
+
+/* ===== sections ===== */
+.sec{position:relative;padding:clamp(90px,13vw,170px) 0;overflow:hidden}
+.sec > .wrap{position:relative;z-index:2}
+.stage{display:block;font-family:var(--type);font-size:.85rem;color:var(--paper);opacity:.55;margin-bottom:.4rem}
+
+/* histoire : plein cadre */
+.story{background:var(--deep)}
+.story-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,6vw,6rem);align-items:center}
+.story figure{position:relative}
+.story figure img{width:100%;max-height:82vh;object-fit:cover;filter:saturate(.85)}
+.story figure::after{content:"";position:absolute;inset:0;box-shadow:inset 0 0 120px 40px var(--deep)}
+.story figcaption{position:absolute;bottom:12px;left:16px;z-index:2;font-family:var(--type);font-size:.75rem;opacity:.7}
+@media(max-width:860px){.story-grid{grid-template-columns:1fr}.story figure{max-width:440px;margin:0 auto}}
+
+/* chiffres */
+.figures{background:var(--forest);padding:clamp(70px,9vw,110px) 0}
+.figures .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2rem;text-align:center}
+.figure b{display:block;font-family:var(--title);font-weight:900;font-size:clamp(3rem,7vw,5.5rem);line-height:1;color:var(--leaf-l)}
+.figure span{font-family:var(--type);font-size:.95rem;opacity:.85}
+@media(max-width:760px){.figures .grid{grid-template-columns:1fr 1fr}}
+
+/* titre dans la brume */
+.title-band{background:var(--night) url("../images/foret-brume.webp") center/cover fixed;text-align:center;padding:clamp(130px,20vw,260px) var(--g)}
+.title-band::before{content:"";position:absolute;inset:0;background:linear-gradient(var(--forest),rgba(7,13,9,.55) 30%,rgba(7,13,9,.55) 70%,var(--night))}
+.title-band blockquote{position:relative;z-index:2;margin:0 auto;max-width:900px}
+.title-band p{font-family:var(--type);font-size:clamp(1.3rem,3vw,2.1rem);line-height:1.55}
+@media(hover:none){.title-band{background-attachment:scroll}}
+
+/* théâtre d'objets */
+.objects{background:var(--night)}
+.obj-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.peek{position:relative;aspect-ratio:4/3;overflow:hidden;border-radius:4px}
+.peek img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 8s ease-out}
+.peek:hover img,.peek.is-in img{transform:scale(1.12)}
+.peek .label{position:absolute;left:16px;bottom:14px;font-family:var(--type);font-size:.8rem;background:rgba(7,13,9,.7);padding:.3rem .6rem}
+.elements{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;margin-top:4rem}
+.el{border-left:2px solid var(--leaf);padding-left:1rem}
+.el h3{color:var(--leaf-l);font-size:1.5rem}
+.el p{font-size:.98rem;opacity:.85}
+@media(max-width:900px){.obj-grid{grid-template-columns:1fr}.elements{grid-template-columns:1fr 1fr}}
+@media(max-width:520px){.elements{grid-template-columns:1fr}}
+
+/* galerie horizontale */
+.reel{background:var(--deep);padding:clamp(80px,11vw,140px) 0}
+.reel-track{display:flex;gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;padding:2rem var(--g) 1.5rem;scrollbar-width:thin;scrollbar-color:var(--leaf) transparent}
+.reel-track figure{flex:0 0 auto;height:clamp(260px,52vh,520px);scroll-snap-align:center;position:relative}
+.reel-track img{height:100%;width:auto;object-fit:cover;border-radius:3px}
+.reel-track figcaption{position:absolute;left:10px;bottom:8px;font-family:var(--type);font-size:.72rem;opacity:.8;text-shadow:0 1px 4px #000}
+.reel-nav{display:flex;gap:.6rem}
+.reel-nav button{width:52px;height:52px;border-radius:50%;border:2px solid var(--paper);background:transparent;color:var(--paper);font-size:1.3rem;cursor:pointer}
+.reel-nav button:hover{background:var(--paper);color:var(--night)}
+.reel-head{display:flex;justify-content:space-between;align-items:end;gap:1rem;flex-wrap:wrap}
+
+/* questions : une par écran */
+.asks{background:#000;position:relative}
+.asks-bg{position:sticky;top:0;height:100vh;background:url("../images/gorille-portrait-nb.webp") center 30%/cover;opacity:.32;margin-bottom:-100vh}
+.ask{min-height:70vh;display:flex;align-items:center;justify-content:center;text-align:center;padding:0 var(--g);position:relative;z-index:2}
+.ask p{font-family:var(--title);font-weight:900;text-transform:uppercase;font-size:clamp(2rem,6vw,4.8rem);line-height:.98;max-width:1000px;margin:0;opacity:.15;transform:scale(.94);transition:opacity .8s,transform .8s}
+.ask.is-in p{opacity:1;transform:none}
+.ask p em{font-style:normal;color:var(--coral)}
+
+/* vidéo */
+.film{background:var(--night);text-align:center}
+.video{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden;max-width:1100px;margin:2.5rem auto 0;border-radius:6px;box-shadow:0 0 0 1px rgba(255,255,255,.08),0 40px 100px rgba(140,198,63,.15)}
+.video img{width:100%;height:100%;object-fit:cover;opacity:.6;transition:opacity .4s,transform 1s}
+.video:hover img{opacity:.8;transform:scale(1.03)}
+.video button{position:absolute;inset:0;z-index:2;width:100%;border:0;background:transparent;cursor:pointer;color:#fff;font-family:var(--body);letter-spacing:.18em;text-transform:uppercase;font-weight:600;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.1rem}
+.video .play{width:104px;height:104px;border-radius:50%;background:var(--coral);display:flex;align-items:center;justify-content:center;box-shadow:0 0 0 0 rgba(236,91,110,.6);animation:pulse 2.2s infinite}
+@keyframes pulse{70%{box-shadow:0 0 0 26px rgba(236,91,110,0)}100%{box-shadow:0 0 0 0 rgba(236,91,110,0)}}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+/* presse */
+.press{background:var(--forest)}
+.quotes{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem)}
+.quote blockquote{margin:0 0 1rem;font-family:var(--title);font-size:clamp(1.8rem,3.6vw,2.8rem);line-height:1.05}
+.quote blockquote::before{content:"«";display:block;font-size:2.4em;line-height:.6;color:var(--coral)}
+.quote .src{font-family:var(--type);font-size:.9rem;opacity:.8}
+.quote a{color:var(--leaf-l)}
+@media(max-width:760px){.quotes{grid-template-columns:1fr}}
+
+/* agenda */
+.agenda{background:var(--night)}
+.dates{list-style:none;margin:2rem 0 0;padding:0}
+.date{display:grid;grid-template-columns:200px 1fr auto;gap:1.5rem;align-items:center;padding:1.5rem 0;border-top:1px solid rgba(242,238,227,.15);transition:background .3s,padding .3s}
+.date:hover{background:rgba(140,198,63,.07);padding-left:1rem;padding-right:1rem}
+.date-d{font-family:var(--title);font-weight:900;font-size:2.8rem;line-height:.9;color:var(--leaf)}
+.date-d small{display:block;font-family:var(--body);font-weight:600;font-size:.8rem;letter-spacing:.14em;text-transform:uppercase;color:var(--paper);opacity:.8;margin-top:.4rem}
+.date strong{display:block;font-size:1.3rem;font-weight:600}
+.date span{opacity:.75}
+.tag{font-family:var(--type);font-size:.8rem;border:1px solid currentColor;padding:.35em .9em;border-radius:99px;white-space:nowrap}
+.tag--sco{color:var(--leaf-l)}.tag--tp{color:var(--coral)}
+@media(max-width:640px){.date{grid-template-columns:1fr;gap:.4rem}.tag{justify-self:start}}
+
+/* programmer */
+.host{background:var(--moss) url("../images/scene-digit-exterieur.webp") center/cover;padding:clamp(100px,14vw,180px) 0}
+.host::before{content:"";position:absolute;inset:0;background:linear-gradient(100deg,rgba(7,13,9,.94) 0%,rgba(7,13,9,.82) 50%,rgba(7,13,9,.45) 100%)}
+.host-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2rem,6vw,5rem);align-items:start}
+.card{background:rgba(242,238,227,.06);border:1px solid rgba(242,238,227,.18);backdrop-filter:blur(6px);padding:1.6rem 1.7rem;border-radius:6px;margin-bottom:1.2rem}
+.card h3{color:var(--leaf-l);font-size:1.4rem}
+.card dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:1rem}
+.card dt{font-family:var(--type);opacity:.75}
+.card dd{margin:0}
+.card ul{margin:0;padding-left:1.1rem;font-size:1rem}
+.dl{display:flex;flex-wrap:wrap;gap:.8rem;margin-top:2rem}
+.dl .btn{font-size:.82rem;padding:.85em 1.3em .7em}
+@media(max-width:900px){.host-grid{grid-template-columns:1fr}}
+
+/* audrey */
+.artist{background:var(--deep)}
+.artist-grid{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(2rem,6vw,5rem);align-items:center}
+.artist figure{position:relative}
+.artist figure img{width:100%;border-radius:4px;filter:saturate(1.05)}
+.artist figure .ring{position:absolute;inset:-18px;border:1px solid var(--leaf);border-radius:4px;transform:rotate(-3deg);pointer-events:none}
+.motto{font-family:var(--title);font-size:clamp(2rem,4vw,3rem);color:var(--coral);line-height:1;margin:1.5rem 0}
+.path{display:grid;grid-template-columns:repeat(5,1fr);gap:1rem;margin-top:4rem;counter-reset:s}
+.path div{border-top:2px solid var(--leaf);padding-top:.8rem;font-size:.95rem;opacity:.9}
+.path b{display:block;font-family:var(--title);font-size:1.6rem;color:var(--leaf-l)}
+@media(max-width:900px){.artist-grid{grid-template-columns:1fr}.artist figure{max-width:420px}.path{grid-template-columns:1fr 1fr}}
+
+/* compagnie + contact */
+.company{background:var(--night)}
+.posters{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:2.5rem}
+.poster{position:relative;overflow:hidden;border-radius:4px}
+.poster img{width:100%;aspect-ratio:3/4;object-fit:cover;transition:transform .8s}
+.poster:hover img{transform:scale(1.06)}
+.poster div{padding:1rem 0 0}
+.poster h3{font-size:1.4rem;margin:0}
+.poster p{margin:0;font-family:var(--type);font-size:.82rem;opacity:.85}
+@media(max-width:860px){.posters{grid-template-columns:1fr;max-width:400px}}
+.contact{background:var(--forest)}
+.contact .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2rem}
+.contact h3{color:var(--leaf-l);font-size:1.4rem}
+.contact a{text-decoration-color:var(--coral);text-underline-offset:4px}
+@media(max-width:860px){.contact .grid{grid-template-columns:1fr}}
+footer{background:#040805;font-size:.82rem;opacity:.75;padding:2rem 0 5rem}
+footer .wrap{display:flex;flex-wrap:wrap;justify-content:space-between;gap:1rem}
+
+/* barre d'appel flottante */
+.dock{position:fixed;left:50%;bottom:16px;z-index:60;transform:translate(-50%,140%);transition:transform .5s cubic-bezier(.2,.8,.2,1);display:flex;align-items:center;gap:1rem;background:rgba(242,238,227,.96);color:var(--night);padding:.5rem .5rem .5rem 1.4rem;border-radius:99px;box-shadow:0 14px 40px rgba(0,0,0,.5);white-space:nowrap;max-width:calc(100vw - 24px)}
+.dock.show{transform:translate(-50%,0)}
+.dock p{margin:0;font-family:var(--type);font-size:.88rem;overflow:hidden;text-overflow:ellipsis}
+.dock .btn{padding:.75em 1.2em .6em;font-size:.78rem}
+@media(max-width:560px){.dock p{display:none}.dock{padding:.4rem}}
+
+/* apparitions */
+.rv{opacity:0;transform:translateY(30px);transition:opacity 1s,transform 1s}
+.rv.is-in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.ask p{opacity:1;transform:none}}
+
+/* bandeau de comparaison (à retirer à la mise en ligne définitive) */
+.compare{position:fixed;left:12px;bottom:12px;z-index:90;background:var(--paper);color:var(--night);font:600 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:.2rem;padding:.35rem;border-radius:99px;box-shadow:0 6px 20px rgba(0,0,0,.45)}
+.compare span{padding:.45rem .6rem .35rem;opacity:.6}
+.compare a{text-decoration:none;padding:.45rem .7rem .35rem;border-radius:99px}
+.compare a[aria-current]{background:var(--coral);color:#fff}
+@media(max-width:560px){.compare{bottom:auto;top:76px}}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">Maniaka Théâtre</a>
+    <nav aria-label="Menu">
+      <a href="#histoire">L'histoire</a><a href="#objets">Le spectacle</a><a href="#images">Images</a><a href="#agenda">Agenda</a><a href="#programmer">Programmer</a><a href="#audrey">Audrey Boudon</a><a href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<div class="alti" aria-hidden="true"><div class="val"><b>3 000</b>m</div><div class="bar"><div class="fill"></div></div><div class="val" id="alt-now"><b>0</b>m</div></div>
+
+<main>
+<!-- ============ OUVERTURE : LAMPE TORCHE ============ -->
+<section class="hero" id="hero" aria-label="Tant pis pour King Kong !">
+  <div class="hero-dim"></div>
+  <div class="hero-img" role="img" aria-label="Portrait en noir et blanc d'un gorille des montagnes"></div>
+  <div class="fog"></div>
+  <p class="hint"><span class="mouse">Bougez la souris…</span><span class="touch">Dans la pénombre…</span> quelqu'un vous observe</p>
+  <div class="hero-text">
+    <div class="wrap">
+      <p class="whisper"><span>« J'entendis,</span> <span>je sentis</span> <span>avant de voir. »</span></p>
+      <h1>Tant pis pour King&nbsp;Kong<span class="bang">&nbsp;!</span></h1>
+      <div class="hero-meta">
+        <p>Théâtre d'objets documentaire · d'après Dian Fossey<br>De et avec Audrey Boudon · dès 8 ans</p>
+        <a class="btn btn--coral" href="#programmer">Programmer le spectacle</a>
+        <a class="btn" href="#film">▶ Bande-annonce</a>
+      </div>
+    </div>
+  </div>
+  <button class="skip" type="button">Allumer la lumière</button>
+</section>
+
+<!-- ============ HISTOIRE ============ -->
+<section class="sec story" id="histoire" data-alt="0">
+  <div class="fog fog--2"></div>
+  <div class="wrap story-grid">
+    <div class="rv">
+      <span class="stage">San Francisco · niveau de la mer</span>
+      <span class="kick">L'histoire</span>
+      <h2>Une femme, des gorilles, un combat</h2>
+      <p class="lead">Enfant solitaire, Dian rêve de vivre entourée d'animaux sauvages. Un jour, en Afrique, elle tombe «&nbsp;amoureuse&nbsp;» des gorilles de montagne.</p>
+      <p>Elle découvre des êtres timides, doux et pacifiques, loin de l'image monstrueuse véhiculée à leur propos. Digit, curieux des humains, devient son préféré. Mais la menace rôde&nbsp;: braconnage, perte d'habitat… Dian se lance dans un combat sans merci, et se fait de nombreux ennemis.</p>
+    </div>
+    <figure class="rv"><img src="../images/dian-fossey-portrait.webp" width="1258" height="1800" loading="lazy" alt="Dian Fossey dans la forêt avec de jeunes gorilles"><figcaption>Dian Fossey · photo Bob Campbell</figcaption></figure>
+  </div>
+</section>
+
+<!-- ============ CHIFFRES ============ -->
+<section class="figures" aria-label="En chiffres">
+  <div class="wrap grid">
+    <div class="figure rv"><b data-count="18">0</b><span>ans de Dian parmi les gorilles</span></div>
+    <div class="figure rv"><b data-count="1000" data-prefix="~">0</b><span>gorilles de montagne aujourd'hui</span></div>
+    <div class="figure rv"><b data-count="1">0</b><span>comédienne, toute une forêt</span></div>
+    <div class="figure rv"><b data-count="30" data-prefix="+">0</b><span>lieux depuis 2022</span></div>
+  </div>
+</section>
+
+<!-- ============ LE TITRE ============ -->
+<section class="sec title-band" data-alt="1200" aria-label="Le titre">
+  <div class="fog"></div>
+  <blockquote class="rv">
+    <span class="stage" style="text-align:center">Congo · 1 200 m</span>
+    <p>Un titre en pied de nez à l'image monstrueuse des gorilles, avant que Dian ne les montre au monde&nbsp;: sauvages et puissants, mais sensibles, pacifiques et capables d'une grande douceur.</p>
+  </blockquote>
+</section>
+
+<!-- ============ THÉÂTRE D'OBJETS ============ -->
+<section class="sec objects" id="objets" data-alt="2200">
+  <div class="wrap">
+    <div class="obj-grid">
+      <div class="rv">
+        <span class="stage">Forêt des Virunga · 2 200 m</span>
+        <span class="kick">Le spectacle</span>
+        <h2>Le tout petit donne à voir l'immensité</h2>
+        <p class="lead">Une comédienne, des objets, et toute une forêt à 3&nbsp;000 mètres d'altitude.</p>
+        <p>Figurines, jumelles, photos noir et blanc, terre et feuillages&nbsp;: chaque objet porte une mémoire. Seule en scène, Audrey Boudon fait vivre Dian, ses parents, son aide de camp Sanweke, un marchand sans vergogne, Digit… et une narratrice au regard tantôt admiratif, tantôt critique.</p>
+      </div>
+      <div class="peek rv"><img src="../images/scene-gorille-ombre.webp" loading="lazy" alt="Face-à-face avec un gorille dans la pénombre"><span class="label">Plan rapproché</span></div>
+    </div>
+    <div class="elements">
+      <div class="el rv"><h3>Objets</h3><p>Un arbre miniature devient forêt, une figurine un gorille de 200 kilos.</p></div>
+      <div class="el rv"><h3>Bois</h3><p>Des modules en bois, comme autant d'étapes de la vie de Dian.</p></div>
+      <div class="el rv"><h3>Brume</h3><p>Orages, rais de lumière, obscurité forestière et clairs-obscurs.</p></div>
+      <div class="el rv"><h3>Musique</h3><p>Voix et basse de Solo Gomez, mêlées aux cris de la jungle.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ GALERIE ============ -->
+<section class="reel" id="images" data-alt="2600">
+  <div class="wrap reel-head">
+    <div><span class="kick">En images</span><h2 style="margin:0">Au cœur du spectacle</h2></div>
+    <div class="reel-nav"><button type="button" data-dir="-1" aria-label="Photos précédentes">←</button><button type="button" data-dir="1" aria-label="Photos suivantes">→</button></div>
+  </div>
+  <div class="reel-track" tabindex="0" aria-label="Galerie de photos, défilement horizontal">
+    <figure><img src="../images/scene-bureau.webp" loading="lazy" alt="Audrey Boudon au bureau de Dian"></figure>
+    <figure><img src="../images/masque-gorille.webp" loading="lazy" alt="Audrey Boudon et un masque de gorille"><figcaption>M. Carrignon</figcaption></figure>
+    <figure><img src="../images/scene-digit-exterieur.webp" loading="lazy" alt="Le décor en plein air"><figcaption>M. Billy</figcaption></figure>
+    <figure><img src="../images/feuillage-congo.webp" loading="lazy" alt="Derrière un bouquet de feuilles"><figcaption>M. Carrignon</figcaption></figure>
+    <figure><img src="../images/scene-rouge.webp" loading="lazy" alt="Scène en lumière rouge"><figcaption>M. Carrignon</figcaption></figure>
+    <figure><img src="../images/scene-photo-gorille.webp" loading="lazy" alt="Photo de gorille devant le visage"><figcaption>F. Roncière</figcaption></figure>
+    <figure><img src="../images/scene-jumelles.webp" loading="lazy" alt="Dian à la jumelle"></figure>
+    <figure><img src="../images/scene-digit-masque.webp" loading="lazy" alt="Digit"><figcaption>F. Roncière</figcaption></figure>
+    <figure><img src="../images/scene-plateau-vert.webp" loading="lazy" alt="Le plateau"><figcaption>M. Carrignon</figcaption></figure>
+    <figure><img src="../images/scene-maquette-nuit.webp" loading="lazy" alt="Village en maquette la nuit"></figure>
+  </div>
+</section>
+
+<!-- ============ QUESTIONS ============ -->
+<section class="asks" aria-label="Les questions du spectacle" data-alt="2800">
+  <div class="asks-bg" aria-hidden="true"></div>
+  <div class="ask"><p>Une seule personne peut-elle changer le cours de l'histoire<em>&nbsp;?</em></p></div>
+  <div class="ask"><p>Peut-on être ami·e avec un animal sauvage<em>&nbsp;?</em></p></div>
+  <div class="ask"><p>Quelle est la part d'humanité des gorilles<em>&nbsp;?</em></p></div>
+  <div class="ask"><p>Et la nôtre, d'animalité<em>&nbsp;?</em></p></div>
+</section>
+
+<!-- ============ BANDE-ANNONCE ============ -->
+<section class="sec film" id="film" data-alt="3000">
+  <div class="wrap">
+    <span class="stage" style="text-align:center">Karisoke · 3 000 m</span>
+    <span class="kick">Bande-annonce</span>
+    <h2>Entrez dans la brume</h2>
+    <div class="video" data-youtube="EKWruIdJ2wE">
+      <button type="button" aria-label="Lire la bande-annonce"><span class="play"><svg width="40" height="40" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>Lire la bande-annonce</button>
+      <img src="../images/scene-feuillage-terre.webp" loading="lazy" alt="">
+    </div>
+    <p style="font-size:.85rem;opacity:.6;margin-top:1rem">Vidéo YouTube chargée uniquement au clic.</p>
+  </div>
+</section>
+
+<!-- ============ PRESSE ============ -->
+<section class="sec press" data-alt="3000">
+  <div class="wrap">
+    <span class="kick">Ils l'ont vu</span>
+    <div class="quotes">
+      <div class="quote rv"><blockquote>Le théâtre d'objets a ce pouvoir de parler à l'âme d'enfant présente en chacun de nous.&nbsp;»</blockquote><p class="src">Audrey Boudon, portrait dans <em>Le Monde</em>, 14 janvier 2025 · <a href="https://www.lemonde.fr/culture/article/2025/01/14/audrey-boudon-comedienne-le-theatre-d-objets-a-ce-pouvoir-de-parler-a-l-ame-d-enfant-presente-en-chacun-de-nous_6497850_3246.html" target="_blank" rel="noopener">lire</a></p></div>
+      <div class="quote rv"><blockquote>Petits et grands ne rentreront assurément pas insensibles de ce voyage.&nbsp;»</blockquote><p class="src"><em>La Voix du Nord</em>, 10 février 2025</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AGENDA ============ -->
+<section class="sec agenda" id="agenda" data-alt="3000">
+  <div class="wrap">
+    <span class="kick">Agenda</span>
+    <h2>Venez le voir</h2>
+    <!-- Ajouter une date : copier un bloc <li class="date" data-date="AAAA-MM-JJ">…</li>. Les dates passées disparaissent seules. -->
+    <ul class="dates">
+      <li class="date" data-date="2026-11-03"><div class="date-d">3 nov.<small>2026 · 10 h &amp; 14 h 15</small></div><div><strong>MCL de Gauchy</strong><span>Gauchy (02)</span></div><span class="tag tag--sco">Scolaires</span></li>
+      <li class="date" data-date="2027-03-12"><div class="date-d">12 mars<small>2027 · 10 h</small></div><div><strong>Centre Culturel François Mitterrand</strong><span>Plouzané (29)</span></div><span class="tag tag--sco">Scolaire</span></li>
+      <li class="date" data-date="2027-03-13"><div class="date-d">13 mars<small>2027 · 11 h</small></div><div><strong>Centre Culturel François Mitterrand</strong><span>Plouzané (29)</span></div><span class="tag tag--tp">Tout public</span></li>
+      <li class="date" data-date="2027-04-15"><div class="date-d">15 avril<small>2027 · horaire à venir</small></div><div><strong>Festival Lesneven S'emmêle</strong><span>Lesneven (29)</span></div><span class="tag tag--tp">Festival</span></li>
+    </ul>
+    <p style="font-family:var(--type);opacity:.75;margin-top:1.5rem">D'autres dates en préparation en Dordogne (24), Ille-et-Vilaine (35) et Pas-de-Calais (62).</p>
+  </div>
+</section>
+
+<!-- ============ PROGRAMMER ============ -->
+<section class="sec host" id="programmer" data-alt="3000">
+  <div class="wrap host-grid">
+    <div class="rv">
+      <span class="kick">Programmateurs, enseignants, festivals</span>
+      <h2>Faites venir la forêt chez vous</h2>
+      <p class="lead">En salle, en itinérance ou en pleine nature&nbsp;: dans les bois, les parcs, les jardins, les lieux patrimoniaux. Au plus près du vivant.</p>
+      <div class="dl">
+        <a class="btn btn--coral" href="#contact">Nous contacter</a>
+        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_dossier-artistique.pdf" download>↓ Dossier artistique</a>
+        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_plaquette.pdf" download>↓ Plaquette</a>
+        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_projet-pedagogique.pdf" download>↓ Projet pédagogique</a>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="card"><h3>Fiche pratique</h3><dl><dt>Public</dt><dd>Tout public dès 8 ans · scolaires dès le CM1</dd><dt>Durée</dt><dd>1 heure</dd><dt>Jauge</dt><dd>100 à 130 en gradin</dd><dt>Plateau</dt><dd>6 × 6 m, h. 3 m, boîte noire</dd><dt>Extérieur</dt><dd>Version légère, tout terrain</dd></dl></div>
+      <div class="card"><h3>Autour du spectacle</h3><ul><li>Environnement, primatologie, philosophie</li><li>Ateliers théâtre, danse, arts plastiques, argile, photo</li><li>Exposition des œuvres créées</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ AUDREY ============ -->
+<section class="sec artist" id="audrey" data-alt="3000">
+  <div class="fog fog--2"></div>
+  <div class="wrap">
+    <div class="artist-grid">
+      <figure class="rv"><span class="ring"></span><img src="../images/audrey-scene.webp" loading="lazy" alt="Audrey Boudon sur scène"></figure>
+      <div class="rv">
+        <span class="kick">Artiste associée · directrice artistique</span>
+        <h2>Audrey Boudon</h2>
+        <p>Comédienne, autrice, metteuse en scène. Du théâtre contemporain au classique, du clown à l'improvisation et au théâtre d'objets, elle cherche la beauté des personnages, la poésie des images et la magie des instants.</p>
+        <p class="motto">«&nbsp;Toujours avoir 5&nbsp;ans&nbsp;!&nbsp;»</p>
+        <p>Elle défend un théâtre décloisonné&nbsp;: <strong>pour enfants accessible aux adultes, et pour adultes accessible aux enfants.</strong></p>
+      </div>
+    </div>
+    <div class="path">
+      <div class="rv"><b>1978</b>Un singe en peluche plus grand qu'elle.</div>
+      <div class="rv"><b>1988</b><em>Gorilles dans la brume</em> au cinéma.</div>
+      <div class="rv"><b>2008</b>Face-à-face avec un orang-outan à Sumatra.</div>
+      <div class="rv"><b>2018</b>Le projet naît.</div>
+      <div class="rv"><b>2022</b>Création à Lille.</div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ COMPAGNIE ============ -->
+<section class="sec company" id="compagnie">
+  <div class="wrap">
+    <span class="kick">La compagnie</span>
+    <h2>Maniaka Théâtre</h2>
+    <p class="lead" style="max-width:820px">Depuis 2002, des spectacles accessibles et «&nbsp;proches des gens&nbsp;», visuels, poétiques ou oniriques. De la métropole lilloise à Saint-Lunaire.</p>
+    <div class="posters">
+      <div class="poster rv"><img src="../images/affiche-femmes-du-nord.webp" loading="lazy" alt="Affiche Femmes du Nord"><div><h3>Femmes du Nord</h3><p>Dès 12 ans</p></div></div>
+      <div class="poster rv"><img src="../images/affiche-a-tous-ceux-qui.webp" loading="lazy" alt="Affiche À tous ceux qui #1"><div><h3>À tous ceux qui #1</h3><p>2017 · dès 10 ans</p></div></div>
+      <div class="poster rv"><img src="../images/affiche-gorille-herbe.webp" loading="lazy" alt="Visuel Tant pis pour King Kong !"><div><h3>Tant pis pour King Kong&nbsp;!</h3><p>2022 · en tournée · dès 8 ans</p></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec contact" id="contact">
+  <div class="wrap">
+    <span class="kick">Contact</span>
+    <h2>Parlons-en</h2>
+    <div class="grid">
+      <div><h3>Artistique</h3><p>Audrey Boudon<br><a href="tel:+33616451098">06 16 45 10 98</a></p></div>
+      <div><h3>Administration</h3><p>Mauve Serra<br><a href="mailto:contact@maniaka-theatre.fr">contact@maniaka-theatre.fr</a></p></div>
+      <div><h3>Siège</h3><p>625, boulevard du Décollé, 35800 Saint-Lunaire<br><a href="tel:+33767971341">07 67 97 13 41</a> · <a href="https://www.facebook.com/maniaka.theatre.39" target="_blank" rel="noopener">Facebook</a></p></div>
+    </div>
+  </div>
+</section>
+</main>
+
+<footer><div class="wrap"><span>© Compagnie Maniaka Théâtre · SIRET 478 052 939 000 46 · Licence PLATESV-D-2021-003438</span><a href="../mentions-legales.html">Mentions légales</a></div></footer>
+
+<div class="dock" aria-label="Programmer le spectacle"><p id="dock-next">Prochaine date : 3 nov. 2026 · Gauchy (02)</p><a class="btn btn--coral" href="#programmer">Programmer</a></div>
+
+<!-- Bandeau de comparaison des propositions : à retirer pour la version définitive -->
+<nav class="compare" aria-label="Propositions"><span>Proposition</span><a href="../">A</a><a href="../proposition-b/">B</a><a href="../proposition-c/" aria-current="page">C</a></nav>
+
+<script>
+(function(){
+  var reduce=matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var hero=document.getElementById("hero"), top=document.querySelector(".top");
+
+  // ----- lampe torche -----
+  var lit=false, moved=false;
+  function light(){ if(lit) return; lit=true; hero.classList.add("lit"); }
+  function at(x,y){ hero.style.setProperty("--x",x+"px"); hero.style.setProperty("--y",y+"px"); }
+  hero.addEventListener("pointermove",function(e){ var r=hero.getBoundingClientRect(); at(e.clientX-r.left,e.clientY-r.top); if(!moved){moved=true;hero.classList.add("moved");} });
+  hero.querySelector(".skip").addEventListener("click",light);
+  // sans souris (téléphone) : la lumière balaie seule
+  var t0=performance.now();
+  function sweep(t){ if(lit||moved) return; var w=hero.clientWidth,h=hero.clientHeight,k=(t-t0)/1000;
+    at(w*(.5+.28*Math.sin(k*.9)), h*(.38+.12*Math.sin(k*1.7))); requestAnimationFrame(sweep); }
+  if(reduce){ light(); } else { requestAnimationFrame(sweep); }
+  // la phrase apparaît mot à mot, puis la lumière s'allume
+  var parts=hero.querySelectorAll(".whisper span");
+  parts.forEach(function(s,i){ setTimeout(function(){ s.classList.add("on"); }, reduce?0:900+i*1300); });
+  setTimeout(light, reduce?0:5600);
+  addEventListener("scroll",function(){ if(scrollY>60) light(); },{passive:true});
+
+  // ----- en-tête, altimètre, barre d'appel -----
+  var alti=document.querySelector(".alti"), fill=alti.querySelector(".fill"), now=document.querySelector("#alt-now b"), dock=document.querySelector(".dock");
+  function onScroll(){
+    var y=scrollY, max=document.documentElement.scrollHeight-innerHeight, p=Math.min(1,Math.max(0,y/max));
+    top.classList.toggle("solid", y>40);
+    alti.classList.toggle("show", y>innerHeight*.6);
+    dock.classList.toggle("show", y>innerHeight*.9 && y<max-500);
+    var m=Math.round(p*3000/10)*10; fill.style.height=(p*100)+"%"; now.textContent=m.toLocaleString("fr-FR");
+  }
+  onScroll(); addEventListener("scroll",onScroll,{passive:true});
+
+  // ----- agenda : dates passées masquées, prochaine date dans la barre -----
+  var today=new Date(); today.setHours(0,0,0,0); var first=null;
+  document.querySelectorAll(".date[data-date]").forEach(function(li){
+    if(new Date(li.dataset.date+"T23:59:59")<today){ li.remove(); return; }
+    if(!first) first=li;
+  });
+  var dn=document.getElementById("dock-next");
+  if(first){ dn.textContent="Prochaine date : "+first.querySelector(".date-d").firstChild.textContent.trim()+" · "+first.querySelector("span").textContent; }
+  else { dn.textContent="Nouvelles dates bientôt"; }
+
+  // ----- vidéo au clic -----
+  document.querySelectorAll(".video[data-youtube]").forEach(function(v){ v.querySelector("button").addEventListener("click",function(){ v.innerHTML='<iframe src="https://www.youtube-nocookie.com/embed/'+v.dataset.youtube+'?autoplay=1&rel=0" title="Bande-annonce" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>'; }); });
+
+  // ----- galerie horizontale -----
+  var track=document.querySelector(".reel-track");
+  document.querySelectorAll(".reel-nav button").forEach(function(b){ b.addEventListener("click",function(){ track.scrollBy({left:+b.dataset.dir*track.clientWidth*.7,behavior:"smooth"}); }); });
+
+  // ----- compteurs -----
+  function count(el){ var to=+el.dataset.count, pre=el.dataset.prefix||"", t1=performance.now();
+    (function step(t){ var k=Math.min(1,(t-t1)/1400), v=Math.round(to*(1-Math.pow(1-k,3))); el.textContent=pre+v.toLocaleString("fr-FR"); if(k<1) requestAnimationFrame(step); })(t1); }
+
+  // ----- apparitions -----
+  var els=document.querySelectorAll(".rv,.ask,.peek");
+  if("IntersectionObserver" in window && !reduce){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(!e.isIntersecting) return; e.target.classList.add("is-in");
+      var c=e.target.querySelector("[data-count]"); if(c) count(c); io.unobserve(e.target); }); },{rootMargin:"0px 0px -15% 0px"});
+    els.forEach(function(e){ io.observe(e); });
+  } else { els.forEach(function(e){ e.classList.add("is-in"); var c=e.querySelector("[data-count]"); if(c) c.textContent=(c.dataset.prefix||"")+(+c.dataset.count).toLocaleString("fr-FR"); }); }
+})();
+</script>
+</body>
+</html>
