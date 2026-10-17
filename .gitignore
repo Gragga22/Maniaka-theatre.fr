@@ -8,3 +8,5 @@ Desktop.ini
 # Outil Impeccable (installé en local, inutile sur le site publié)
 .claude/skills/impeccable/
 .claude/agents/impeccable-*.md
+# Fichiers de travail Impeccable (critiques, mode live)
+.impeccable/

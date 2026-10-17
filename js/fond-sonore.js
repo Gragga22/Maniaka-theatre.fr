@@ -1,8 +1,8 @@
 /* Compagnie Maniaka Théâtre — fond sonore
    Bandes son originales créées par Solo Gomez pour Tant pis pour King Kong !
    - Un des deux morceaux est choisi au hasard, puis ils s'enchaînent.
-   - Les navigateurs interdisent le son avant que le visiteur ait cliqué ou touché la page :
-     la musique démarre donc au premier clic, toucher ou touche du clavier.
+   - La musique ne démarre que si le visiteur clique sur « Écouter ».
+     S'il l'a déjà choisie lors d'une visite précédente, elle reprend à son premier clic sur la page.
    - Le bouton en bas à droite coupe ou remet le son ; le choix est mémorisé.
    - La musique se met en pause quand la bande-annonce est lancée ou quand l'onglet est caché. */
 (function () {
@@ -20,7 +20,7 @@
   var audio = new Audio(tracks[index]);
   audio.preload = "none";
   audio.volume = 0;
-  var wanted = pref() !== "off";   // le visiteur veut-il du son ?
+  var wanted = pref() === "on";    // le visiteur a-t-il choisi la musique ?
   var started = false;
 
   // ----- bouton -----
@@ -53,7 +53,7 @@
   function render() {
     var playing = wanted && started && !audio.paused;
     btn.classList.toggle("off", !playing);
-    btn.querySelector(".lbl").textContent = playing ? "Couper le son" : "Écouter";
+    btn.querySelector(".lbl").textContent = playing ? "Couper le son" : "Écouter la musique";
     btn.setAttribute("aria-label", playing ? "Couper la musique" : "Écouter la musique");
     btn.setAttribute("aria-pressed", playing ? "true" : "false");
     btn.title = "Musique originale du spectacle : Solo Gomez";
