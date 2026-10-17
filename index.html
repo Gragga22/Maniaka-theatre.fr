@@ -21,7 +21,7 @@
 
   <link rel="preload" href="fonts/londrina-solid-black.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="preload" href="fonts/josefin-sans.woff2" as="font" type="font/woff2" crossorigin>
-  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/style.css?v=2">
 
   <script type="application/ld+json">
   {
@@ -67,6 +67,7 @@
 
 <!-- ================= ACCUEIL ================= -->
 <section class="hero" aria-label="Accueil">
+  <div class="hero-bg" aria-hidden="true"></div>
   <div class="wrap">
     <div>
       <h1>Tant pis pour King&nbsp;Kong<span class="bang">&nbsp;!</span></h1>
@@ -122,7 +123,7 @@
 <!-- ================= LE TITRE ================= -->
 <section class="quote-band" aria-label="Pourquoi ce titre">
   <div class="wrap">
-    <blockquote class="reveal">
+    <blockquote class="words">
       <p>Un titre en pied de nez à l'image monstrueuse des gorilles, avant que Dian ne les montre au monde&nbsp;: sauvages et puissants, mais sensibles, pacifiques et capables d'une grande douceur.</p>
     </blockquote>
   </div>
@@ -191,7 +192,7 @@
   <div class="questions-bg" role="img" aria-label="Portrait en noir et blanc d'un gorille"></div>
   <div class="wrap">
     <h2 class="reveal">Une seule personne peut-elle changer le cours de l'histoire&nbsp;?</h2>
-    <ul>
+    <ul class="slips">
       <li class="reveal">Quelle est la place de l'Homme dans le monde&nbsp;? Celle de l'animal&nbsp;?</li>
       <li class="reveal">Comment cohabiter&nbsp;?</li>
       <li class="reveal">La nature est-elle au service de l'Homme&nbsp;?</li>
@@ -243,18 +244,18 @@
 <!-- ================= PRESSE ================= -->
 <section class="section section--paper2" id="presse">
   <div class="wrap">
-    <h2>Ils l'ont vu</h2>
+    <h2>Dans la presse</h2>
     <div class="press">
-      <article class="press-card reveal">
-        <span class="paper">Le Monde — 14 janvier 2025</span>
-        <blockquote>«&nbsp;Le théâtre d'objets a ce pouvoir de parler à l'âme d'enfant présente en chacun de nous.&nbsp;»</blockquote>
-        <p>Portrait d'Audrey Boudon par Cristina Marino.</p>
-        <a href="https://www.lemonde.fr/culture/article/2025/01/14/audrey-boudon-comedienne-le-theatre-d-objets-a-ce-pouvoir-de-parler-a-l-ame-d-enfant-presente-en-chacun-de-nous_6497850_3246.html" target="_blank" rel="noopener">Lire l'article <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg></a>
-      </article>
       <article class="press-card reveal">
         <span class="paper">La Voix du Nord — 10 février 2025</span>
         <blockquote>«&nbsp;Petits et grands ne rentreront assurément pas insensibles de ce voyage.&nbsp;»</blockquote>
         <p>«&nbsp;Une création originale et réussie&nbsp;», à propos de la représentation au Petit Théâtre de Templeuve.</p>
+      </article>
+      <article class="press-card reveal">
+        <span class="paper">Le Monde — 14 janvier 2025</span>
+        <blockquote>«&nbsp;Le théâtre d'objets a ce pouvoir de parler à l'âme d'enfant présente en chacun de nous.&nbsp;»</blockquote>
+        <p>Audrey Boudon, dans son portrait par Cristina Marino.</p>
+        <a href="https://www.lemonde.fr/culture/article/2025/01/14/audrey-boudon-comedienne-le-theatre-d-objets-a-ce-pouvoir-de-parler-a-l-ame-d-enfant-presente-en-chacun-de-nous_6497850_3246.html" target="_blank" rel="noopener">Lire l'article <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg></a>
       </article>
     </div>
   </div>
@@ -364,7 +365,7 @@
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M12 3v12m0 0l-5-5m5 5l5-5M4 21h16"/></svg>
         Projet pédagogique <small>(PDF, 1,7 Mo)</small>
       </a>
-      <a class="btn" href="#contact">Nous contacter</a>
+      <a class="btn" href="mailto:contact@maniaka-theatre.fr?subject=Programmation%20%C2%AB%20Tant%20pis%20pour%20King%20Kong%20!%20%C2%BB&amp;body=Lieu%20%3A%20%0AVille%20%3A%20%0ADates%20souhait%C3%A9es%20%3A%20%0AJauge%20%3A%20%0ASalle%20ou%20ext%C3%A9rieur%20%3A%20%0AS%C3%A9ances%20scolaires%20%3A%20%0A">Écrire pour programmer</a>
     </div>
 
     <div class="team">
@@ -484,13 +485,14 @@
       </div>
       <div class="contact-card">
         <h3>Administration</h3>
-        <p>Mauve Serra<br><a href="mailto:contact@maniaka-theatre.fr">contact@maniaka-theatre.fr</a></p>
+        <p>Mauve Serra<br><a href="mailto:contact@maniaka-theatre.fr?subject=Programmation%20%C2%AB%20Tant%20pis%20pour%20King%20Kong%20!%20%C2%BB&amp;body=Lieu%20%3A%20%0AVille%20%3A%20%0ADates%20souhait%C3%A9es%20%3A%20%0AJauge%20%3A%20%0ASalle%20ou%20ext%C3%A9rieur%20%3A%20%0AS%C3%A9ances%20scolaires%20%3A%20%0A">contact@maniaka-theatre.fr</a></p>
       </div>
       <div class="contact-card">
         <h3>Siège social</h3>
         <p>Compagnie Maniaka Théâtre<br>625, boulevard du Décollé<br>35800 Saint-Lunaire<br><a href="tel:+33767971341">07 67 97 13 41</a></p>
       </div>
     </div>
+    <p class="ask-for">Pour une réponse rapide, précisez vos dates, votre lieu, la jauge, et si vous pensez à la salle ou à l'extérieur.</p>
     <div class="socials">
       <a href="https://www.facebook.com/maniaka.theatre.39" target="_blank" rel="noopener">
         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.5 22v-8h2.7l.4-3.2h-3.1V8.8c0-.9.3-1.5 1.6-1.5h1.7V4.4c-.3 0-1.3-.1-2.5-.1-2.4 0-4.1 1.5-4.1 4.2v2.3H7.5V14h2.7v8h3.3z"/></svg>
@@ -517,9 +519,9 @@
 </dialog>
 
 <!-- Bandeau de comparaison des propositions : à retirer pour la version définitive -->
-<nav class="compare" aria-label="Propositions"><span>Proposition</span><a href="./" aria-current="page">A</a><a href="proposition-b/">B</a><a href="proposition-c/">C</a></nav>
+<nav class="compare" aria-label="Propositions"><span>Proposition</span><a href="./" aria-current="page">A</a><a href="proposition-c/">C</a></nav>
 
-<script src="js/main.js"></script>
+<script src="js/main.js?v=2"></script>
 <script src="js/fond-sonore.js"></script>
 </body>
 </html>

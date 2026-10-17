@@ -116,6 +116,49 @@
     });
   }
 
+  var reduce = window.matchMedia && matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+  // ----- Accueil : profondeur (le fond défile moins vite, l'affiche suit la souris) -----
+  var hero = document.querySelector(".hero");
+  var heroBg = document.querySelector(".hero-bg");
+  if (hero && heroBg && !reduce) {
+    window.addEventListener("scroll", function () {
+      if (window.scrollY < window.innerHeight * 1.2) heroBg.style.setProperty("--sy", window.scrollY * 0.35 + "px");
+    }, { passive: true });
+    if (matchMedia("(hover: hover)").matches) {
+      hero.addEventListener("pointermove", function (e) {
+        var r = hero.getBoundingClientRect();
+        hero.style.setProperty("--px", ((e.clientX - r.left) / r.width - 0.5).toFixed(3));
+        hero.style.setProperty("--py", ((e.clientY - r.top) / r.height - 0.5).toFixed(3));
+      });
+      hero.addEventListener("pointerleave", function () { hero.style.setProperty("--px", 0); hero.style.setProperty("--py", 0); });
+    }
+  }
+
+  // ----- Phrase du titre : elle s'écrit mot à mot au défilement -----
+  document.querySelectorAll(".words p").forEach(function (p) {
+    if (reduce) return;
+    var parts = p.textContent.split(" ");
+    p.textContent = "";
+    var spans = parts.map(function (w, i) {
+      var s = document.createElement("span");
+      s.className = "w";
+      s.textContent = w;
+      p.appendChild(s);
+      if (i < parts.length - 1) p.appendChild(document.createTextNode(" "));
+      return s;
+    });
+    var box = p.closest("section");
+    function paint() {
+      var r = box.getBoundingClientRect();
+      var k = (window.innerHeight * 0.85 - r.top) / (r.height * 0.75);
+      var n = Math.round(Math.max(0, Math.min(1, k)) * spans.length);
+      spans.forEach(function (s, i) { s.classList.toggle("on", i < n); });
+    }
+    paint();
+    window.addEventListener("scroll", paint, { passive: true });
+  });
+
   // ----- Apparition douce au défilement -----
   var reveals = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window) {
