@@ -74,11 +74,13 @@ p{margin:0 0 1em}
 
 /* ===== ouverture : la lampe torche ===== */
 .hero{position:relative;height:100vh;height:100svh;min-height:600px;overflow:hidden;background:var(--night)}
-.hero-img{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 28%/cover no-repeat;
-  -webkit-mask-image:radial-gradient(circle var(--r,200px) at var(--x,50%) var(--y,45%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
-          mask-image:radial-gradient(circle var(--r,200px) at var(--x,50%) var(--y,45%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
+.hero-img{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 50%/cover no-repeat;
+  -webkit-mask-image:radial-gradient(circle var(--r,200px) at var(--x,50%) var(--y,28%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
+          mask-image:radial-gradient(circle var(--r,200px) at var(--x,50%) var(--y,28%),#000 0%,rgba(0,0,0,.85) 35%,transparent 100%);
   filter:contrast(1.1)}
-.hero-dim{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 28%/cover no-repeat;opacity:.16}
+.hero-dim{position:absolute;inset:0;background:url("../images/gorille-portrait-nb.webp") center 50%/cover no-repeat;opacity:.16}
+/* le regard du gorille au-dessus du titre ; sur écran en hauteur, la photo est agrandie pour pouvoir la remonter */
+@media(max-aspect-ratio:17/25){.hero-img,.hero-dim{background-size:auto 125%;background-position:center 100%}}
 .hero.lit .hero-img{-webkit-mask-image:none;mask-image:none;opacity:.55;transition:opacity 1.6s}
 .hero::after{content:"";position:absolute;inset:auto 0 0;height:60%;background:linear-gradient(transparent,rgba(7,13,9,.85));z-index:2;pointer-events:none}
 .hero-text{position:absolute;inset:auto 0 0;z-index:3;padding:0 var(--g) clamp(60px,10vh,110px)}
@@ -97,7 +99,7 @@ p{margin:0 0 1em}
 .hero-meta .btn--coral{position:relative}
 .hero-meta .btn--coral.found{animation:found 1.1s cubic-bezier(.2,.8,.2,1)}
 @keyframes found{0%{transform:none;filter:none}35%{transform:scale(1.07);filter:brightness(1.25)}100%{transform:none;filter:none}}
-.hint{position:absolute;top:18%;left:50%;transform:translateX(-50%);width:90%;z-index:3;font-family:var(--type);font-size:.9rem;letter-spacing:.03em;opacity:.7;transition:opacity .6s;pointer-events:none;text-align:center}
+.hint{position:absolute;top:calc(68px + 1.6rem);left:50%;transform:translateX(-50%);width:90%;z-index:3;font-family:var(--type);font-size:.9rem;letter-spacing:.03em;opacity:.7;transition:opacity .6s;pointer-events:none;text-align:center}
 .hero.lit .hint,.hero.moved .hint{opacity:0}
 .hint .touch{display:none}@media(hover:none){.hint .mouse{display:none}.hint .touch{display:inline}}
 .skip{position:absolute;right:var(--g);bottom:24px;z-index:4;font-family:var(--type);font-size:.85rem;background:none;border:0;color:var(--paper);opacity:.7;cursor:pointer;text-decoration:underline;text-underline-offset:4px}
@@ -574,7 +576,7 @@ html{scrollbar-color:var(--moss) var(--night);caret-color:var(--leaf)}
   var cta=hero.querySelector(".hero-meta .btn--coral"), t0=performance.now(), from=null;
   function ease(u){ return 1-Math.pow(1-u,3); }
   function sweep(t){ if(lit||moved) return; var w=hero.clientWidth,h=hero.clientHeight,k=(t-t0)/1000;
-    var x=w*(.5+.28*Math.sin(k*.9)), y=h*(.36+.12*Math.sin(k*1.7));
+    var x=w*(.5+.28*Math.sin(k*.9)), y=h*(.27+.08*Math.sin(k*1.7));
     if(k>3.6){
       var r=hero.getBoundingClientRect(), b=cta.getBoundingClientRect();
       if(!from) from=[x,y];
