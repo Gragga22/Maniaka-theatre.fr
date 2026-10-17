@@ -91,7 +91,8 @@
   var lb = document.querySelector(".lightbox");
   var items = Array.prototype.slice.call(document.querySelectorAll(".gallery figure"));
   if (lb && items.length && typeof lb.showModal === "function") {
-    var lbImg = lb.querySelector("img");
+    var lbImg = document.createElement("img");
+    lb.insertBefore(lbImg, lb.firstChild);
     var lbTxt = lb.querySelector("p");
     var current = 0;
     function show(i) {

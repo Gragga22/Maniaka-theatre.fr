@@ -30,7 +30,7 @@
     "background:#f4f0e6;color:#13251a;border:1px solid rgba(0,0,0,.18);border-radius:99px;" +
     "padding:.55rem .95rem .5rem .75rem;font:600 .74rem/1 'Josefin Sans',sans-serif;letter-spacing:.1em;text-transform:uppercase;" +
     "cursor:pointer;box-shadow:0 6px 20px rgba(0,0,0,.35);transition:background .2s}" +
-    ".son-btn:hover{background:#ec5b6e;color:#fff}" +
+    ".son-btn:hover{background:#c93f53;color:#fff}" +
     ".son-btn svg{width:20px;height:20px;flex:none}" +
     ".son-btn .eq{display:flex;align-items:flex-end;gap:2px;height:14px}" +
     ".son-btn .eq i{width:3px;background:#3b7a2a;height:30%;animation:son-eq 1s ease-in-out infinite}" +

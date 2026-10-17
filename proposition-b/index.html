@@ -18,7 +18,7 @@
 
 :root{
   --paper:#efe7d3; --paper-2:#e4d9bf; --ink:#1b1a15; --ink-soft:#5a5446;
-  --moss:#2f4a2c; --leaf:#8cc63f; --coral:#ec5b6e; --coral-dark:#c63e52; --tape:rgba(201,229,154,.78);
+  --moss:#2f4a2c; --leaf:#8cc63f; --coral:#ec5b6e; --coral-dark:#9e2a3e; --tape:rgba(201,229,154,.78);
   --title:"Londrina Solid","Arial Black",sans-serif; --body:"Josefin Sans","Trebuchet MS",sans-serif; --type:"Special Elite","Courier New",monospace;
   --g:clamp(16px,4vw,40px);
 }
@@ -44,7 +44,7 @@ p{margin:0 0 1em}
 /* scotch */
 .tape{position:relative}
 .tape::before{content:"";position:absolute;top:-14px;left:50%;width:120px;height:30px;background:var(--tape);transform:translateX(-50%) rotate(-4deg);z-index:2;box-shadow:0 1px 2px rgba(0,0,0,.08)}
-.polaroid{background:#fbf8f0;padding:12px 12px 44px;box-shadow:0 18px 40px rgba(40,30,10,.28);position:relative}
+.polaroid{background:#fbf8f0;padding:12px 12px 44px;box-shadow:0 18px 40px rgba(0,0,0,.22);position:relative}
 .polaroid figcaption{position:absolute;left:0;right:0;bottom:12px;text-align:center;font-family:var(--type);font-size:.82rem;color:var(--ink-soft)}
 
 /* ===== en-tête ===== */
@@ -98,7 +98,7 @@ p{margin:0 0 1em}
 .margin-note{font-family:var(--type);color:var(--coral-dark);border-left:3px solid var(--coral);padding:.2rem 0 .2rem 1rem;margin:1.6rem 0;font-size:1.05rem;line-height:1.6}
 
 /* fiche espèce */
-.species{background:#fbf8f0;border:1.5px solid var(--ink);padding:1.4rem 1.5rem;box-shadow:8px 8px 0 var(--moss);margin-top:2rem}
+.species{background:#fbf8f0;border:1.5px solid var(--ink);padding:1.4rem 1.5rem;box-shadow:0 14px 34px rgba(0,0,0,.14);margin-top:2rem}
 .species h3{font-size:1.5rem;margin-bottom:.1em}
 .species .latin{font-family:var(--type);font-style:italic;color:var(--ink-soft);margin-bottom:1rem;display:block}
 .species dl{display:grid;grid-template-columns:auto 1fr;gap:.35rem 1rem;margin:0;font-size:1rem}
@@ -124,8 +124,7 @@ p{margin:0 0 1em}
 .scale-view img.off{opacity:0;transform:scale(1.15)}
 .scale-view .frame{position:absolute;inset:14px;border:1px solid rgba(255,255,255,.5);pointer-events:none}
 .scale-view .rec{position:absolute;top:22px;left:26px;font-family:var(--type);color:#fff;font-size:.85rem;display:flex;align-items:center;gap:.5rem}
-.scale-view .rec::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--coral);animation:blink 1.2s infinite}
-@keyframes blink{50%{opacity:.2}}
+.scale-view .rec::before{content:"";width:10px;height:10px;border-radius:50%;background:var(--coral)}
 .switch{display:inline-flex;border:2px solid var(--ink);margin:1rem 0 1.5rem}
 .switch button{font-family:var(--type);font-size:1rem;background:transparent;border:0;padding:.6rem 1.1rem;cursor:pointer;color:var(--ink)}
 .switch button[aria-pressed="true"]{background:var(--ink);color:var(--paper)}
@@ -166,7 +165,7 @@ p{margin:0 0 1em}
 
 /* presse : coupures */
 .clips{display:grid;grid-template-columns:1fr 1fr;gap:2rem;margin-top:2rem}
-.clip{background:#fbf8f0;padding:1.8rem;box-shadow:0 12px 30px rgba(0,0,0,.12);clip-path:polygon(0 2%,4% 0,12% 2%,22% 0,35% 1.5%,50% 0,63% 2%,78% 0,90% 1.5%,100% 0,99% 50%,100% 100%,88% 98%,74% 100%,60% 98%,45% 100%,30% 98%,15% 100%,0 98%,1% 50%)}
+.clip{background:#fbf8f0;padding:1.8rem;box-shadow:0 12px 30px rgba(0,0,0,.12)}
 .clip .src{font-family:var(--type);text-transform:uppercase;letter-spacing:.1em;font-size:.82rem;color:var(--ink-soft)}
 .clip blockquote{margin:.8rem 0 1rem;font-family:var(--title);font-size:clamp(1.5rem,2.8vw,2rem);line-height:1.1}
 .clip a{font-family:var(--type);color:var(--coral-dark)}
@@ -184,7 +183,7 @@ p{margin:0 0 1em}
 @media(max-width:640px){.log thead{display:none}.log tr{display:grid;grid-template-columns:1fr auto;gap:.2rem 1rem;padding:1rem 0;border-bottom:1px dashed rgba(27,26,21,.35)}.log td{border:0;padding:0}.log td:first-child{grid-column:1/-1}}
 
 /* bon de mission */
-.mission{background:#fbf8f0;border:2px solid var(--ink);padding:clamp(1.5rem,4vw,3rem);position:relative;margin-top:2rem;box-shadow:12px 12px 0 var(--coral)}
+.mission{background:#fbf8f0;border:2px solid var(--ink);padding:clamp(1.5rem,4vw,3rem);position:relative;margin-top:3rem;box-shadow:0 18px 44px rgba(0,0,0,.14)}
 .mission .ok{position:absolute;right:clamp(1rem,4vw,3rem);top:-36px;font-family:var(--title);font-weight:900;font-size:clamp(1.4rem,3vw,2rem);color:var(--coral-dark);border:4px solid var(--coral-dark);padding:.2em .6em;transform:rotate(8deg);background:var(--paper);letter-spacing:.04em}
 .mission-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem}
 .mission h3{color:var(--moss);font-size:1.5rem}
@@ -231,7 +230,10 @@ p{margin:0 0 1em}
 .compare{position:fixed;left:12px;bottom:12px;z-index:90;background:var(--ink);color:#fff;font:600 .72rem/1 var(--body);letter-spacing:.08em;text-transform:uppercase;display:flex;align-items:center;gap:.2rem;padding:.35rem;border-radius:99px;box-shadow:0 6px 20px rgba(0,0,0,.35)}
 .compare span{padding:.45rem .6rem .35rem;opacity:.7}
 .compare a{color:#fff;text-decoration:none;padding:.45rem .7rem .35rem;border-radius:99px}
-.compare a[aria-current]{background:var(--coral)}
+.compare a[aria-current]{background:var(--coral-dark)}
+::selection{background:var(--tape);color:var(--ink)}
+html{scrollbar-color:var(--moss) var(--paper-2);caret-color:var(--coral-dark)}
+.ico{width:1.1em;height:1.1em;flex:none;vertical-align:-.15em}
 </style>
 </head>
 <body>
@@ -266,7 +268,7 @@ p{margin:0 0 1em}
       <p class="sub">Théâtre d'objets documentaire, d'après <em>Gorilles dans la brume</em> de Dian Fossey.<br>De et avec Audrey Boudon · Tout public dès 8 ans · 1 h</p>
       <div class="btns">
         <a class="btn btn--ink" href="#programmer">Accueillir le spectacle</a>
-        <a class="btn" href="#bande-annonce">▶ Bande-annonce</a>
+        <a class="btn" href="#bande-annonce"><svg class="ico" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5v14l11-7z"/></svg> Bande-annonce</a>
       </div>
     </div>
     <div class="collage">
@@ -288,7 +290,6 @@ p{margin:0 0 1em}
 <section class="chap" id="histoire">
   <div class="wrap cols">
     <div class="rv">
-      <div class="chap-head"><span class="chap-num">Observation n°1</span><span class="chap-date">L'histoire</span></div>
       <h2>Une femme chez les géants</h2>
       <p class="lead">Enfant solitaire, Dian rêve de vivre entourée d'animaux sauvages. Devenue adulte, lors d'un voyage en Afrique, elle tombe «&nbsp;amoureuse&nbsp;» des gorilles de montagne et se fait engager pour les étudier.</p>
       <p>Elle découvre des êtres timides, doux et pacifiques, loin de l'image monstrueuse véhiculée à leur propos. Parmi eux, Digit se montre curieux des humains&nbsp;: un lien fort se noue. Mais la menace rôde. Dian se lance dans un combat sans merci pour protéger «&nbsp;ses&nbsp;» gorilles et se fait de nombreux ennemis…</p>
@@ -323,14 +324,13 @@ p{margin:0 0 1em}
   <div class="wrap">
     <div class="scale">
       <div class="rv">
-        <div class="chap-head"><span class="chap-num">Observation n°2</span><span class="chap-date">Le langage du spectacle</span></div>
         <h2>Le tout petit donne à voir l'immensité</h2>
         <p>Une comédienne, des objets, et toute une forêt à 3&nbsp;000 mètres d'altitude. Comme au cinéma, le spectacle joue des échelles&nbsp;: plan large, zoom, flash-back.</p>
         <div class="switch" role="group" aria-label="Changer d'échelle">
           <button type="button" aria-pressed="true" data-view="0">Plan large</button>
           <button type="button" aria-pressed="false" data-view="1">Gros plan</button>
         </div>
-        <p class="note">← Essayez&nbsp;: changez d'échelle.</p>
+        <p class="note">Essayez&nbsp;: changez d'échelle.</p>
       </div>
       <div class="scale-view rv">
         <img src="../images/scene-plateau-vert.webp" loading="lazy" alt="Vue d'ensemble du plateau et de ses modules en bois">
@@ -350,7 +350,6 @@ p{margin:0 0 1em}
 <!-- ============ QUESTIONS ============ -->
 <section class="questions">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num" style="background:var(--coral)">Questions ouvertes</span></div>
     <h2 class="rv">Une seule personne peut-elle changer le cours de l'histoire&nbsp;?</h2>
     <div class="stickies">
       <p class="sticky rv">Quelle est la place de l'Homme dans le monde&nbsp;? Celle de l'animal&nbsp;?</p>
@@ -366,7 +365,6 @@ p{margin:0 0 1em}
 <!-- ============ BANDE-ANNONCE ============ -->
 <section class="chap" id="bande-annonce">
   <div class="wrap" style="text-align:center">
-    <div class="chap-head" style="justify-content:center"><span class="chap-num">Archive filmée</span></div>
     <h2>La bande-annonce</h2>
     <div class="video" data-youtube="EKWruIdJ2wE">
       <button type="button" aria-label="Lire la bande-annonce"><span class="play"><svg width="36" height="36" viewBox="0 0 24 24" fill="#fff"><path d="M8 5v14l11-7z"/></svg></span>Lire la bande-annonce</button>
@@ -379,7 +377,6 @@ p{margin:0 0 1em}
 <!-- ============ IMAGES ============ -->
 <section class="chap ruled" id="images">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num">Planche contact</span></div>
     <h2>Le spectacle en images</h2>
     <div class="contact-sheet">
       <figure class="polaroid rv"><img src="../images/scene-bureau.webp" loading="lazy" alt="Audrey Boudon au bureau"><figcaption>San Francisco</figcaption></figure>
@@ -397,9 +394,8 @@ p{margin:0 0 1em}
 <!-- ============ PRESSE ============ -->
 <section class="chap" style="padding-top:0">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num">Revue de presse</span></div>
     <div class="clips">
-      <article class="clip rv"><span class="src">Le Monde · 14 janvier 2025</span><blockquote>«&nbsp;Le théâtre d'objets a ce pouvoir de parler à l'âme d'enfant présente en chacun de nous.&nbsp;»</blockquote><a href="https://www.lemonde.fr/culture/article/2025/01/14/audrey-boudon-comedienne-le-theatre-d-objets-a-ce-pouvoir-de-parler-a-l-ame-d-enfant-presente-en-chacun-de-nous_6497850_3246.html" target="_blank" rel="noopener">Lire le portrait →</a></article>
+      <article class="clip rv"><span class="src">Le Monde · 14 janvier 2025</span><blockquote>«&nbsp;Le théâtre d'objets a ce pouvoir de parler à l'âme d'enfant présente en chacun de nous.&nbsp;»</blockquote><a href="https://www.lemonde.fr/culture/article/2025/01/14/audrey-boudon-comedienne-le-theatre-d-objets-a-ce-pouvoir-de-parler-a-l-ame-d-enfant-presente-en-chacun-de-nous_6497850_3246.html" target="_blank" rel="noopener">Lire le portrait <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14m0 0l-6-6m6 6l-6 6"/></svg></a></article>
       <article class="clip rv"><span class="src">La Voix du Nord · 10 février 2025</span><blockquote>«&nbsp;Petits et grands ne rentreront assurément pas insensibles de ce voyage.&nbsp;»</blockquote><span class="note">«&nbsp;Une création originale et réussie&nbsp;»</span></article>
     </div>
   </div>
@@ -408,7 +404,6 @@ p{margin:0 0 1em}
 <!-- ============ AGENDA ============ -->
 <section class="chap ruled" id="agenda">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num">Journal de bord</span></div>
     <h2>Prochaines expéditions</h2>
     <!-- Ajouter une date : copier une ligne <tr class="date" data-date="AAAA-MM-JJ">…</tr>. Les dates passées disparaissent seules. -->
     <table class="log">
@@ -427,7 +422,6 @@ p{margin:0 0 1em}
 <!-- ============ PROGRAMMER ============ -->
 <section class="chap" id="programmer">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num">Pour les programmateurs</span></div>
     <h2>Bon pour une expédition chez vous</h2>
     <p class="lead" style="max-width:780px">En salle équipée, en itinérance ou en pleine nature&nbsp;: le spectacle s'installe au plus près du vivant.</p>
     <div class="mission rv">
@@ -438,9 +432,9 @@ p{margin:0 0 1em}
         <div><h3>Autour du spectacle</h3><ul><li>Sensibilisation : environnement, primatologie, philosophie</li><li>Ateliers : théâtre, danse, arts plastiques, argile, photo</li><li>Exposition des œuvres créées</li></ul></div>
       </div>
       <div class="downloads">
-        <a class="btn btn--ink" href="../documents/Tant-pis-pour-King-Kong_dossier-artistique.pdf" download>↓ Dossier artistique</a>
-        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_plaquette.pdf" download>↓ Plaquette</a>
-        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_projet-pedagogique.pdf" download>↓ Projet pédagogique</a>
+        <a class="btn btn--ink" href="../documents/Tant-pis-pour-King-Kong_dossier-artistique.pdf" download><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg> Dossier artistique</a>
+        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_plaquette.pdf" download><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg> Plaquette</a>
+        <a class="btn" href="../documents/Tant-pis-pour-King-Kong_projet-pedagogique.pdf" download><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 4v12m0 0l-5-5m5 5l5-5M5 20h14"/></svg> Projet pédagogique</a>
         <a class="btn btn--ink" style="background:var(--coral-dark);border-color:var(--coral-dark)" href="#contact">Nous contacter</a>
       </div>
     </div>
@@ -453,7 +447,6 @@ p{margin:0 0 1em}
   <div class="wrap explorer">
     <figure class="polaroid tape rv"><img src="../images/audrey-scene.webp" loading="lazy" alt="Audrey Boudon sur scène"><figcaption>Audrey Boudon</figcaption></figure>
     <div class="rv">
-      <div class="chap-head"><span class="chap-num">Portrait de l'exploratrice</span></div>
       <h2>Audrey Boudon</h2>
       <p class="note">Artiste associée · directrice artistique · comédienne, autrice, metteuse en scène</p>
       <p class="lead">Rendre au spectateur son œil d'enfant. Sa devise&nbsp;: «&nbsp;Toujours avoir 5 ans&nbsp;!&nbsp;»</p>
@@ -471,7 +464,6 @@ p{margin:0 0 1em}
 <!-- ============ COMPAGNIE ============ -->
 <section class="chap" id="compagnie">
   <div class="wrap">
-    <div class="chap-head"><span class="chap-num">La compagnie</span></div>
     <h2>Maniaka Théâtre</h2>
     <p class="lead" style="max-width:820px">Depuis 2002, de la métropole lilloise à Saint-Lunaire, des spectacles accessibles et «&nbsp;proches des gens&nbsp;», visuels, poétiques ou oniriques.</p>
     <div class="shows">

@@ -4,3 +4,7 @@ Desktop.ini
 
 # Sons originaux trop lourds pour le site (les versions MP3 sont dans sons/)
 *.wav
+
+# Outil Impeccable (installé en local, inutile sur le site publié)
+.claude/skills/impeccable/
+.claude/agents/impeccable-*.md
