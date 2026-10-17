@@ -1,3 +1,6 @@
 .claude/settings.local.json
 Thumbs.db
 Desktop.ini
+
+# Sons originaux trop lourds pour le site (les versions MP3 sont dans sons/)
+*.wav
